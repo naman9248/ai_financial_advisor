@@ -1,10 +1,10 @@
-import config
+import streamlit as st
 from groq import Groq
 
-# Initialize the Groq Client
-if config.GROQ_API_KEY:
-    client = Groq(api_key=config.GROQ_API_KEY)
-    # Using Llama 3.3 70B for high quality reasoning
+GROQ_API_KEY = st.secrets.get("GROQ_API_KEY")
+
+if GROQ_API_KEY:
+    client = Groq(api_key=GROQ_API_KEY)
     DEFAULT_MODEL = "llama-3.3-70b-versatile"
 else:
     client = None
